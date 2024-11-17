@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tyke-GC: Build a World of Inspiration">
-    <meta name="keywords" content="Tyke-GC, empowerment and motivation, inclusivity and scale, creativite and well being">
+    <meta name="keywords" content="Tyke-GC, empowerment and motivation, inclusivity and scale, creativity and well being">
     <title>Welcome to Tyke-GC</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
             background: url('IMG_TYKEGC.jpeg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -67,6 +68,25 @@
             }
         }
 
+        /* Mission Section */
+        #mission {
+            margin-top: 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            color: white;
+            text-align: left;
+            max-width: 800px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        /* Link styles */
+        #mission a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
         /* Footer styling */
         footer {
             position: absolute;
@@ -89,6 +109,17 @@
     <div class="content">
         <h1>Welcome to Tyke-GC</h1>
         <p>Build a World of Inspiration</p>
+
+        <!-- Link to Mission Section -->
+        <p><a href="#mission">Learn about our Mission</a></p>
+    </div>
+
+    <!-- Mission Section -->
+    <div id="mission">
+        <h2>Our Mission</h2>
+        <p>
+            At Tyke-GC, we strive to build a world filled with inspiration. Our mission is to empower individuals, foster inclusivity, and drive positive change through creativity and well-being. We aim to create scalable solutions that inspire action and transform lives. Our focus is on encouraging innovation and building a better tomorrow, today.
+        </p>
     </div>
 
     <!-- Footer Section -->
