@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tyke-GC: Build a World of Inspiration">
-    <meta name="keywords" content="Tyke-GC, empowerment and motivation, inclusivity and scale, creativity and well being">
+    <meta name="keywords" content="Tyke-GC, empowerment and motivation, inclusivity and scale, creativity and well-being">
     <title>Welcome to Tyke-GC</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -20,6 +20,10 @@
         body {
             background: url('IMG_TYKEGC.jpeg') no-repeat center center fixed;
             background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             font-family: 'Roboto', sans-serif;
             color: white;
             position: relative;
@@ -36,34 +40,10 @@
             z-index: 0;
         }
 
-        /* Top navigation link */
-        .top-link {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        .top-link a {
-            color: #ffcc00;
-            text-decoration: none;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-
-        .top-link a:hover {
-            text-decoration: underline;
-        }
-
         /* Centered content */
         .content {
             position: relative;
             z-index: 1;
-            text-align: center;
-            margin-top: 15%;
         }
 
         h1 {
@@ -87,19 +67,6 @@
             }
         }
 
-        /* Mission Section */
-        #mission {
-            display: none;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            color: white;
-            text-align: left;
-            max-width: 800px;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
         /* Footer styling */
         footer {
             position: absolute;
@@ -115,30 +82,60 @@
             color: white;
             text-decoration: none;
         }
+
+        /* Mission Link Styling */
+        .mission-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            font-size: 1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .mission-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        /* Mission Content Styling */
+        #mission-content {
+            display: none;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
+    <script>
+        function toggleMission() {
+            const mission = document.getElementById('mission-content');
+            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </head>
 <body>
     <div class="overlay"></div>
-
-    <!-- Top-left link to display the Mission -->
-    <div class="top-link">
-        <a href="#" onclick="toggleMission()">Our Mission</a>
-    </div>
-
-    <!-- Main Content -->
+    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Our Mission</a>
     <div class="content">
         <h1>Welcome to Tyke-GC</h1>
         <p>Build a World of Inspiration</p>
     </div>
 
-    <!-- Mission Section -->
-    <div id="mission">
+    <!-- Mission Content -->
+    <div id="mission-content">
         <h2>Our Mission</h2>
         <p>
-            At Tyke-GC, we strive to build a world filled with inspiration. Our mission is to empower individuals, 
-            foster inclusivity, and drive positive change through creativity and well-being. 
-            We aim to create scalable solutions that inspire action and transform lives. 
-            Our focus is on encouraging innovation and building a better tomorrow, today.
+            At Tyke-GC, our mission is to empower individuals and communities through innovation, 
+            inclusivity, and creativity. We aim to build a world where inspiration thrives, 
+            well-being is prioritized, and opportunities for growth are accessible to all.
         </p>
     </div>
 
@@ -146,17 +143,5 @@
     <footer>
         <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
     </footer>
-
-    <!-- JavaScript for toggling the Mission section -->
-    <script>
-        function toggleMission() {
-            const missionSection = document.getElementById('mission');
-            if (missionSection.style.display === 'none' || missionSection.style.display === '') {
-                missionSection.style.display = 'block';
-            } else {
-                missionSection.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
