@@ -81,68 +81,86 @@
         footer a {
             color: white;
             text-decoration: none;
-        }
-
-        /* Mission Link Styling */
-        .mission-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-            font-size: 1rem;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
+            margin: 0 10px;
             font-weight: bold;
         }
 
-        .mission-link:hover {
-            background: rgba(255, 255, 255, 0.8);
-            color: black;
+        footer a:hover {
+            text-decoration: underline;
         }
 
-        /* Mission Content Styling */
-        #mission-content {
+        /* Modal styling for Privacy Policy */
+        .modal {
             display: none;
-            position: relative;
-            z-index: 1;
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
             padding: 20px;
-            border-radius: 10px;
-            font-size: 0.6rem; /* Smaller font size */
+            font-size: 0.9rem;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .modal p, .modal ol {
+            margin: 10px 0;
+        }
+
+        .modal .close-btn {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .modal .close-btn a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .modal .close-btn a:hover {
+            background: rgba(255, 255, 255, 0.6);
         }
     </style>
     <script>
-        function toggleMission() {
-            const mission = document.getElementById('mission-content');
-            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+        function toggleModal() {
+            const modal = document.getElementById('privacy-policy-modal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </head>
 <body>
     <div class="overlay"></div>
-    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Mission</a>
+
     <div class="content">
         <h1>Tyke-GC</h1>
         <p>Building a World of Inspiration</p>
     </div>
 
-    <!-- Mission Content -->
-    <div id="mission-content">
-       
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-policy-modal" class="modal">
+        <div class="close-btn">
+            <a href="javascript:void(0);" onclick="toggleModal()">Close</a>
+        </div>
+        <p><strong>Effective Date:</strong> [Insert Date]</p>
         <p>
-            At Tyke-GC, our mission is to inspire through the strategic ownership and management of a diverse portfolio in the luxury sector. 
-            We aim to foster creativity and innovation by supporting brands that craft unique environments, products, and experiences. 
-            Our focus is on leveraging our assets to contribute to growth and progress within this dynamic industry, while creating opportunities for meaningful value generation. 
-            Through our commitment, we aspire to empower individuals and communities to unlock their creative potential and pursue their goals with purpose.
+            At Tyke-GC, we respect your privacy. This Privacy Policy explains how we handle any data we may collect through our website.
         </p>
+        <ol>
+            <li><strong>Data Collection:</strong> We do not collect personal information such as names, emails, or addresses from visitors to our website. Any data we might collect (such as IP addresses) is used purely for website functionality and security.</li>
+            <li><strong>Cookies & Analytics:</strong> We may use cookies or similar technologies for website analytics (e.g., Google Analytics) to help us improve user experience. These cookies do not collect personal identifying information, and their purpose is strictly to monitor website traffic and performance. By using this site, you consent to this use.</li>
+            <li><strong>Third-Party Links:</strong> Our website may contain links to external sites. We are not responsible for their privacy practices or content. Please review the privacy policies of any third-party websites you visit.</li>
+            <li><strong>Updates to This Policy:</strong> We may update this Privacy Policy from time to time. Any changes will be posted here with an updated “Effective Date.”</li>
+        </ol>
     </div>
 
     <!-- Footer Section -->
     <footer>
+        <a href="javascript:void(0);" onclick="toggleModal()">Privacy Policy</a>
         <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
     </footer>
 </body>
