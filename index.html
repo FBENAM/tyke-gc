@@ -81,6 +81,7 @@
         footer a {
             color: white;
             text-decoration: none;
+            margin: 0 10px;
             font-weight: bold;
         }
 
@@ -88,167 +89,141 @@
             text-decoration: underline;
         }
 
-        /* Mission Section Link */
-        .mission-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-            font-size: 1rem;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .mission-link:hover {
-            background: rgba(255, 255, 255, 0.8);
-            color: black;
-        }
-
-        #mission-content {
-            display: none;
-            position: relative;
-            z-index: 1;
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1rem;
-            color: white;
-            text-align: left;
-        }
-
         /* Privacy Policy Modal Styling */
-        #privacy-modal {
+        .modal-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10;
         }
 
-        #privacy-modal .modal-content {
-            background: white;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; /* Default size for smaller screens */
+            max-width: 600px; /* Cap size for larger screens */
+            background-color: white;
             color: black;
-            max-width: 600px;
-            width: 100%;
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            max-height: 80vh;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 11;
+            overflow: hidden; /* Prevent content from spilling outside */
         }
 
-        #privacy-modal .modal-content h2 {
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-header h2 {
+            margin: 0;
             font-size: 1.5rem;
-            margin-top: 0;
         }
 
-        #privacy-modal .modal-content p {
+        .modal-header .close-btn {
+            font-size: 1.5rem;
+            color: black;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            padding: 20px;
+            max-height: 400px; /* Limit the height of the modal */
+            overflow-y: auto; /* Enable scrolling for overflowing content */
+        }
+
+        .modal-content p, .modal-content ol {
+            margin: 10px 0;
             font-size: 1rem;
             line-height: 1.5;
         }
 
-        #privacy-modal .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-        }
-
+        /* Responsive Modal for Small Screens */
         @media (max-width: 768px) {
-            #privacy-modal .modal-content {
-                max-width: 90%;
-                padding: 15px;
+            .modal-header h2 {
+                font-size: 1.2rem;
             }
 
-            #privacy-modal .modal-content h2 {
-                font-size: 1.25rem;
-            }
-
-            #privacy-modal .modal-content p {
+            .modal-content {
                 font-size: 0.9rem;
             }
         }
     </style>
     <script>
-        function toggleMission() {
-            const mission = document.getElementById('mission-content');
-            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+        // Open the modal
+        function toggleModal(open = true) {
+            const modal = document.getElementById('privacy-policy-modal');
+            const overlay = document.getElementById('modal-overlay');
+            if (open) {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            } else {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+            }
         }
 
-        function openPrivacyModal() {
-            document.getElementById('privacy-modal').style.display = 'flex';
-        }
+        // Close modal when clicking outside or pressing "Escape"
+        document.addEventListener('click', (event) => {
+            const modal = document.getElementById('privacy-policy-modal');
+            const overlay = document.getElementById('modal-overlay');
+            if (event.target === overlay) {
+                toggleModal(false);
+            }
+        });
 
-        function closePrivacyModal() {
-            document.getElementById('privacy-modal').style.display = 'none';
-        }
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                toggleModal(false);
+            }
+        });
     </script>
 </head>
 <body>
     <div class="overlay"></div>
-    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Mission</a>
+
+    <!-- Main Content -->
     <div class="content">
         <h1>Tyke-GC</h1>
         <p>Building a World of Inspiration</p>
     </div>
 
-    <!-- Mission Content -->
-    <div id="mission-content">
-        <p>
-            At Tyke-GC, our mission is to inspire through the strategic ownership and management of a diverse portfolio in the luxury sector. 
-            We aim to foster creativity and innovation by supporting brands that craft unique environments, products, and experiences. 
-            Our focus is on leveraging our assets to contribute to growth and progress within this dynamic industry, while creating opportunities for meaningful value generation. 
-            Through our commitment, we aspire to empower individuals and communities to unlock their creative potential and pursue their goals with purpose.
-        </p>
-    </div>
-
     <!-- Privacy Policy Modal -->
-    <div id="privacy-modal">
-        <div class="modal-content">
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="privacy-policy-modal" class="modal">
+        <div class="modal-header">
             <h2>Privacy Policy</h2>
-            <p><strong>Effective Date:</strong> November 18, 2024</p>
+            <span class="close-btn" onclick="toggleModal(false)">&times;</span>
+        </div>
+        <div class="modal-content">
+            <p><strong>Effective Date:</strong> [Insert Date]</p>
             <p>
                 At Tyke-GC, we respect your privacy. This Privacy Policy explains how we handle any data we may collect through our website.
             </p>
-            <p>
-                <strong>1. Data Collection</strong><br>
-                We do not collect personal information such as names, emails, or addresses from visitors to our website. Any data we might collect (such as IP addresses) is used purely for website functionality and security.
-            </p>
-            <p>
-                <strong>2. Cookies & Analytics</strong><br>
-                We may use cookies or similar technologies for website analytics (e.g., Google Analytics) to help us improve user experience. These cookies do not collect personal identifying information, and their purpose is strictly to monitor website traffic and performance. By using this site, you consent to this use.
-            </p>
-            <p>
-                <strong>3. Third-Party Links</strong><br>
-                Our website may contain links to external sites. We are not responsible for their privacy practices or content. Please review the privacy policies of any third-party websites you visit.
-            </p>
-            <p>
-                <strong>4. Updates to This Policy</strong><br>
-                We may update this Privacy Policy from time to time. Any changes will be posted here with an updated “Effective Date.”
-            </p>
+            <ol>
+                <li><strong>Data Collection:</strong> We do not collect personal information such as names, emails, or addresses from visitors to our website. Any data we might collect (such as IP addresses) is used purely for website functionality and security.</li>
+                <li><strong>Cookies & Analytics:</strong> We may use cookies or similar technologies for website analytics (e.g., Google Analytics) to help us improve user experience. These cookies do not collect personal identifying information, and their purpose is strictly to monitor website traffic and performance. By using this site, you consent to this use.</li>
+                <li><strong>Third-Party Links:</strong> Our website may contain links to external sites. We are not responsible for their privacy practices or content. Please review the privacy policies of any third-party websites you visit.</li>
+                <li><strong>Updates to This Policy:</strong> We may update this Privacy Policy from time to time. Any changes will be posted here with an updated “Effective Date.”</li>
+            </ol>
         </div>
-        <span class="close" onclick="closePrivacyModal()">×</span>
     </div>
 
     <!-- Footer Section -->
     <footer>
+        <a href="javascript:void(0);" onclick="toggleModal(true)">Privacy Policy</a>
         <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
-        <p><a href="javascript:void(0);" onclick="openPrivacyModal()">Privacy Policy</a></p>
     </footer>
 </body>
 </html>
