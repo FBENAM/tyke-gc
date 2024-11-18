@@ -88,6 +88,39 @@
             text-decoration: underline;
         }
 
+        /* Mission Section Link */
+        .mission-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            font-size: 1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .mission-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        #mission-content {
+            display: none;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: white;
+            text-align: left;
+        }
+
         /* Privacy Policy Modal Styling */
         #privacy-modal {
             display: none;
@@ -152,6 +185,11 @@
         }
     </style>
     <script>
+        function toggleMission() {
+            const mission = document.getElementById('mission-content');
+            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+        }
+
         function openPrivacyModal() {
             document.getElementById('privacy-modal').style.display = 'flex';
         }
@@ -163,9 +201,20 @@
 </head>
 <body>
     <div class="overlay"></div>
+    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Mission</a>
     <div class="content">
         <h1>Tyke-GC</h1>
         <p>Building a World of Inspiration</p>
+    </div>
+
+    <!-- Mission Content -->
+    <div id="mission-content">
+        <p>
+            At Tyke-GC, our mission is to inspire through the strategic ownership and management of a diverse portfolio in the luxury sector. 
+            We aim to foster creativity and innovation by supporting brands that craft unique environments, products, and experiences. 
+            Our focus is on leveraging our assets to contribute to growth and progress within this dynamic industry, while creating opportunities for meaningful value generation. 
+            Through our commitment, we aspire to empower individuals and communities to unlock their creative potential and pursue their goals with purpose.
+        </p>
     </div>
 
     <!-- Privacy Policy Modal -->
