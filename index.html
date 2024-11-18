@@ -57,6 +57,16 @@
         }
 
         /* Responsive typography */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1.3rem;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -70,12 +80,13 @@
         /* Footer styling */
         footer {
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             width: 100%;
             text-align: center;
             font-size: 0.9rem;
             color: white;
             z-index: 1;
+            padding: 20px 0;
         }
 
         footer a {
@@ -83,6 +94,7 @@
             text-decoration: none;
             margin: 0 10px;
             font-weight: bold;
+            padding: 5px;
         }
 
         footer a:hover {
@@ -112,13 +124,20 @@
         /* Mission Content Styling */
         #mission-content {
             display: none;  /* Hidden by default */
+            opacity: 0;
+            transition: opacity 0.3s ease;
             position: relative;
             z-index: 1;
             margin-top: 20px;
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
-            font-size: 1rem; /* Normal font size */
+            font-size: 1rem;
+        }
+
+        #mission-content.show {
+            display: block;
+            opacity: 1;
         }
 
         /* Privacy Policy Modal Styling */
@@ -139,14 +158,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90%; /* Default size for smaller screens */
-            max-width: 600px; /* Cap size for larger screens */
+            width: 90%;
+            max-width: 600px;
             background-color: white;
             color: black;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             z-index: 11;
-            overflow: hidden; /* Prevent content from spilling outside */
+            overflow: hidden;
         }
 
         .modal-header {
@@ -171,8 +190,8 @@
 
         .modal-content {
             padding: 20px;
-            max-height: 400px; /* Limit the height of the modal */
-            overflow-y: auto; /* Enable scrolling for overflowing content */
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .modal-content p, .modal-content ol {
@@ -196,7 +215,7 @@
         // Toggle the Mission Section visibility
         function toggleMission() {
             const mission = document.getElementById('mission-content');
-            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+            mission.classList.toggle('show');
         }
 
         // Open the Privacy Policy Modal
@@ -206,9 +225,14 @@
             if (open) {
                 modal.style.display = 'block';
                 overlay.style.display = 'block';
+                modal.setAttribute('aria-hidden', 'false');
+                overlay.setAttribute('aria-hidden', 'false');
+                modal.querySelector('h2').focus(); // Focus on modal header when opened
             } else {
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+                overlay.setAttribute('aria-hidden', 'true');
             }
         }
 
@@ -238,7 +262,7 @@
     </div>
 
     <!-- Mission Link -->
-    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Mission</a>
+    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()" aria-label="Toggle mission section">Mission</a>
 
     <!-- Mission Content -->
     <div id="mission-content">
@@ -264,17 +288,16 @@
             </p>
             <ol>
                 <li><strong>Data Collection:</strong> We do not collect personal information such as names, emails, or addresses from visitors to our website. Any data we might collect (such as IP addresses) is used purely for website functionality and security.</li>
-                <li><strong>Cookies & Analytics:</strong> We may use cookies or similar technologies for website analytics (e.g., Google Analytics) to help us improve user experience. These cookies do not collect personal identifying information, and their purpose is strictly to monitor website traffic and performance. By using this site, you consent to this use.</li>
-                <li><strong>Third-Party Links:</strong> Our website may contain links to external sites. We are not responsible for their privacy practices or content. Please review the privacy policies of any third-party websites you visit.</li>
-                <li><strong>Updates to This Policy:</strong> We may update this Privacy Policy from time to time. Any changes will be posted here with an updated “Effective Date.”</li>
+                <li><strong>Cookies:</strong> Our website may use cookies to enhance your browsing experience. You can disable cookies in your browser settings, but this may affect your experience on our site.</li>
+                <li><strong>Data Protection:</strong> We take reasonable measures to protect any data stored on our site from unauthorized access or disclosure.</li>
             </ol>
+            <p>If you have any questions about our Privacy Policy, please contact us at [Contact Information].</p>
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <a href="javascript:void(0);" onclick="toggleModal(true)">Privacy Policy</a>
-        <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
+        <p>&copy; 2024 Tyke-GC. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
