@@ -81,71 +81,78 @@
         footer a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Modal styling for Privacy Policy */
-        .modal {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 20px;
-            font-size: 0.9rem;
-            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+        /* Mission and Privacy Policy Link Styling */
+        .link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             z-index: 2;
-        }
-
-        .modal p, .modal ol {
-            margin: 10px 0;
-        }
-
-        .modal .close-btn {
-            text-align: right;
-            margin-bottom: 10px;
-        }
-
-        .modal .close-btn a {
+            font-size: 1rem;
             color: white;
-            font-weight: bold;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
             border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
         }
 
-        .modal .close-btn a:hover {
-            background: rgba(255, 255, 255, 0.6);
+        .link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        /* Content Sections Styling */
+        .content-section {
+            display: none;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.8rem; /* Smaller font size */
         }
     </style>
     <script>
-        function toggleModal() {
-            const modal = document.getElementById('privacy-policy-modal');
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        function toggleContent(contentId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Toggle the selected section
+            const content = document.getElementById(contentId);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </head>
 <body>
     <div class="overlay"></div>
 
+    <!-- Links for Mission and Privacy Policy -->
+    <a href="javascript:void(0);" class="link" onclick="toggleContent('mission-content')">Mission</a>
+    <a href="javascript:void(0);" class="link" onclick="toggleContent('privacy-policy-content')">Privacy Policy</a>
+
     <div class="content">
         <h1>Tyke-GC</h1>
         <p>Building a World of Inspiration</p>
     </div>
 
-    <!-- Privacy Policy Modal -->
-    <div id="privacy-policy-modal" class="modal">
-        <div class="close-btn">
-            <a href="javascript:void(0);" onclick="toggleModal()">Close</a>
-        </div>
+    <!-- Mission Content -->
+    <div id="mission-content" class="content-section">
+        <p>
+            At Tyke-GC, our mission is to inspire through the strategic ownership and management of a diverse portfolio in the luxury sector. 
+            We aim to foster creativity and innovation by supporting brands that craft unique environments, products, and experiences. 
+            Our focus is on leveraging our assets to contribute to growth and progress within this dynamic industry, while creating opportunities for meaningful value generation. 
+            Through our commitment, we aspire to empower individuals and communities to unlock their creative potential and pursue their goals with purpose.
+        </p>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <div id="privacy-policy-content" class="content-section">
         <p><strong>Effective Date:</strong> [Insert Date]</p>
         <p>
             At Tyke-GC, we respect your privacy. This Privacy Policy explains how we handle any data we may collect through our website.
@@ -160,7 +167,6 @@
 
     <!-- Footer Section -->
     <footer>
-        <a href="javascript:void(0);" onclick="toggleModal()">Privacy Policy</a>
         <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
     </footer>
 </body>
