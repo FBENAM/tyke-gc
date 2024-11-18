@@ -89,6 +89,38 @@
             text-decoration: underline;
         }
 
+        /* Mission Link Styling */
+        .mission-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            font-size: 1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .mission-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        /* Mission Content Styling */
+        #mission-content {
+            display: none;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
         /* Privacy Policy Modal Styling */
         .modal-overlay {
             display: none;
@@ -107,14 +139,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90%; /* Default size for smaller screens */
-            max-width: 600px; /* Cap size for larger screens */
+            width: 90%;
+            max-width: 600px;
             background-color: white;
             color: black;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             z-index: 11;
-            overflow: hidden; /* Prevent content from spilling outside */
+            overflow: hidden;
         }
 
         .modal-header {
@@ -139,8 +171,8 @@
 
         .modal-content {
             padding: 20px;
-            max-height: 400px; /* Limit the height of the modal */
-            overflow-y: auto; /* Enable scrolling for overflowing content */
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .modal-content p, .modal-content ol {
@@ -149,7 +181,6 @@
             line-height: 1.5;
         }
 
-        /* Responsive Modal for Small Screens */
         @media (max-width: 768px) {
             .modal-header h2 {
                 font-size: 1.2rem;
@@ -161,7 +192,13 @@
         }
     </style>
     <script>
-        // Open the modal
+        // Toggle Mission Content
+        function toggleMission() {
+            const mission = document.getElementById('mission-content');
+            mission.style.display = mission.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Toggle Privacy Policy Modal
         function toggleModal(open = true) {
             const modal = document.getElementById('privacy-policy-modal');
             const overlay = document.getElementById('modal-overlay');
@@ -174,9 +211,8 @@
             }
         }
 
-        // Close modal when clicking outside or pressing "Escape"
+        // Close modal on outside click or "Escape"
         document.addEventListener('click', (event) => {
-            const modal = document.getElementById('privacy-policy-modal');
             const overlay = document.getElementById('modal-overlay');
             if (event.target === overlay) {
                 toggleModal(false);
@@ -193,10 +229,23 @@
 <body>
     <div class="overlay"></div>
 
+    <!-- Mission Link -->
+    <a href="javascript:void(0);" class="mission-link" onclick="toggleMission()">Mission</a>
+
     <!-- Main Content -->
     <div class="content">
         <h1>Tyke-GC</h1>
         <p>Building a World of Inspiration</p>
+    </div>
+
+    <!-- Mission Content -->
+    <div id="mission-content">
+        <p>
+            At Tyke-GC, our mission is to inspire through the strategic ownership and management of a diverse portfolio in the luxury sector. 
+            We aim to foster creativity and innovation by supporting brands that craft unique environments, products, and experiences. 
+            Our focus is on leveraging our assets to contribute to growth and progress within this dynamic industry, while creating opportunities for meaningful value generation. 
+            Through our commitment, we aspire to empower individuals and communities to unlock their creative potential and pursue their goals with purpose.
+        </p>
     </div>
 
     <!-- Privacy Policy Modal -->
@@ -212,15 +261,15 @@
                 At Tyke-GC, we respect your privacy. This Privacy Policy explains how we handle any data we may collect through our website.
             </p>
             <ol>
-                <li><strong>Data Collection:</strong> We do not collect personal information such as names, emails, or addresses from visitors to our website. Any data we might collect (such as IP addresses) is used purely for website functionality and security.</li>
-                <li><strong>Cookies & Analytics:</strong> We may use cookies or similar technologies for website analytics (e.g., Google Analytics) to help us improve user experience. These cookies do not collect personal identifying information, and their purpose is strictly to monitor website traffic and performance. By using this site, you consent to this use.</li>
-                <li><strong>Third-Party Links:</strong> Our website may contain links to external sites. We are not responsible for their privacy practices or content. Please review the privacy policies of any third-party websites you visit.</li>
-                <li><strong>Updates to This Policy:</strong> We may update this Privacy Policy from time to time. Any changes will be posted here with an updated “Effective Date.”</li>
+                <li>We do not collect personal information such as names, emails, or addresses from visitors to our website.</li>
+                <li>We may use cookies or similar technologies for website analytics to improve user experience.</li>
+                <li>We are not responsible for third-party links' privacy practices.</li>
+                <li>We may update this Privacy Policy with an updated effective date.</li>
             </ol>
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
         <a href="javascript:void(0);" onclick="toggleModal(true)">Privacy Policy</a>
         <p>&copy; 2024 Tyke-GC. All rights reserved.</p>
